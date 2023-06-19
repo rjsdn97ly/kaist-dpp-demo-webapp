@@ -3,7 +3,7 @@
     import logo from "$lib/assets/kaist_logo.png";
 </script>
 
-<div class="header-div">
+<div class="header-div" style="display: flex; flex-direction: column; box-shadow: 0px 0px 5px 1px #555555;">
     <Navbar let:hidden let:toggle color="form">
         <NavBrand href="/">
             <img
@@ -12,7 +12,7 @@
             alt="Logo"
             />
             <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            KAIST DPP DEMO
+            KAIST GS1 DIGITAL LINK
             </span>
         </NavBrand>
         <!-- <NavHamburger on:click={toggle} />

@@ -6,9 +6,7 @@
 </script>
 
 <Header />
-<hr />
 <slot />
-<hr />
 <!-- <Footer /> -->
 
 <!-- layout은 가장 상위의 layout을 따라가는 듯 -->
