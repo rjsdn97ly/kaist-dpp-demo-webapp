@@ -4,6 +4,10 @@
   import Footer from "$lib/components/footer.svelte";
   import CustomCss from "$lib/css/custom.css";
 </script>
+<svelte:head>
+  <!-- elements go here -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</svelte:head>
 
 <Header />
 <slot />
