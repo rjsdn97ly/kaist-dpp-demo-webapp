@@ -8,6 +8,7 @@
     if (typeof window !== "undefined") {
         parsed = queryString.parse(window.location.search);
     }
+    let pureQString = parsed.key + "";
     let qString = parsed.key + "";
     let deafultLang = "en";
     qString = qString.split("/");
@@ -48,7 +49,6 @@
             }
             if(item.LinkType == "gs1:traceability"){
                 traceUrl = item.DestinationUrl;
-                console.log(traceUrl)
             }
         });
         results = results; // mutate arrays or objects will not trigger updates by themselves. One way to fix that is to assign results to itself to tell the compiler it has changed
@@ -112,7 +112,7 @@
                             transform: scale(0.8, 0.8);
                             transform-origin: 0 0;"
                             scrolling="no" align="center"
-                            title="epcis-trace" src={traceUrl}>
+                            title="epcis-trace" src="https://id.oliot.org{pureQString}?linktype=gs1:traceability">
                         </iframe>
                     </div>
                 </div>

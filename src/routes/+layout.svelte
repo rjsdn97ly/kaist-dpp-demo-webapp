@@ -6,7 +6,7 @@
 </script>
 <svelte:head>
   <!-- elements go here -->
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
 </svelte:head>
 
 <Header />
