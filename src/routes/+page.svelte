@@ -27,7 +27,7 @@
     let imgSrc = "";
     let imgTitle = "";
     let videoSrc = "";
-	let traceUrl="";
+	// let traceUrl="";
 
     onMount(async () => {
         const headers = new Headers({
@@ -47,9 +47,9 @@
                 let newStr = item.DestinationUrl;
                 videoSrc = newStr.replace("https://youtu.be/", "")
             }
-            if(item.LinkType == "gs1:traceability"){
-                traceUrl = item.DestinationUrl;
-            }
+            // if(item.LinkType == "gs1:traceability"){
+            //     traceUrl = item.DestinationUrl;
+            // }
         });
         results = results; // mutate arrays or objects will not trigger updates by themselves. One way to fix that is to assign results to itself to tell the compiler it has changed
     });
@@ -62,7 +62,7 @@
     </div>
     <br>
     <div class="area">
-        <div style="display: flex; flex-direction: column; box-shadow: 0px 0px 5px 1px #555555;">
+        <div style="display: flex; flex-direction: column;">
             <p>GS1 Services</p>
             <div class="link-area" style="padding: 0px 5px 0px 5px">
                 {#each results as item}
@@ -81,23 +81,20 @@
 
         <br>
 
-        <div style="display: flex; flex-direction: column; box-shadow: 0px 0px 5px 1px #555555;">
-        <p>GS1 Realated Video</p>
+        <div style="display: flex; flex-direction: column;">
         {#if videoSrc != ""}
+            <p>GS1 Realated Video</p>
             <Youtube id="{videoSrc}"/>
-        {:else}
-            <p>loading...</p>
         {/if}
         </div>
 
-        <br>
+        <!-- <br>
 
         <div style="display: flex; flex-direction: column; box-shadow: 0px 0px 5px 1px #555555;">
-            <!-- <p>GS1 Traceability</p> -->
+            <p>GS1 Traceability</p>
             {#if traceUrl != ""}
                 <div class="traceability-area">
                     <br>
-                    <!-- not working on chrome... -->
                     <div style="width: 100%; height:100%;">
                         <iframe
                             style="width: 130%; height:130%;
@@ -119,7 +116,7 @@
             {:else}
                 <p>loading...</p>
             {/if}
-        </div>
+        </div> -->
     </div>
 </main>
 
