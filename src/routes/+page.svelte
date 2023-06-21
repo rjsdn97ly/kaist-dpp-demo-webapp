@@ -36,7 +36,7 @@
         const dlResponse = await fetch(dlAddress, {headers}).then(response => response.json());
         let dupCheckArr = [];
         dlResponse.forEach((item,idx)=>{
-            if(item.AcceptLanguage == deafultLang && item.LinkType != "image" && item.LinkType != "main"){
+            if(item.AcceptLanguage == deafultLang && item.LinkType != "image" && item.LinkType != "gs1:homepage"){
                 results.push(item);
             }
             if(item.LinkType == "image"){
