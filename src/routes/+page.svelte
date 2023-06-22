@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import queryString from "query-string";
-    import { GradientButton, Button } from 'flowbite-svelte';
+    import { GradientButton, Button, Card, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
     import Youtube from "svelte-youtube-embed";
     import { AccordionItem, Accordion } from 'flowbite-svelte'
 
@@ -51,6 +51,7 @@
     let imgSrc = "";
     let imgTitle = "";
     let videoSrc = "";
+    let pipUrl = "";
 	// let traceUrl="";
 
     async function getData(url) {
@@ -73,6 +74,7 @@
                     case 'gs1:pip':
                         item.name = "Product Information";
                         item.type = "gs1:pip";
+                        pipUrl = item.DestinationUrl;
                         break;
                     case 'gs1:relatedVideo':
                         item.name = "Realated Video";
@@ -81,10 +83,6 @@
                     case 'gs1:dpp':
                         item.name = "Traceability";
                         item.type = "gs1:traceability";
-                        break;
-                    case 'data':
-                        getData(item.DestinationUrl);
-                        console.log(item);
                         break;
                     default:
                         break;
@@ -119,6 +117,31 @@
     </div>
     <br>
     <div class="area">
+        <Card>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Tesla 100kWh Pack specifications</h5>
+            <Table>
+                <TableBody class="divide-y">
+                  <TableBodyRow>
+                    <TableBodyCell>16 x 6.3kWh Tesla Modules</TableBodyCell>
+                  </TableBodyRow>
+                  <TableBodyRow>
+                    <TableBodyCell>103 kWh</TableBodyCell>
+                  </TableBodyRow>
+                  <TableBodyRow>
+                    <TableBodyCell>400V pack</TableBodyCell>
+                  </TableBodyRow>
+                  <TableBodyRow>
+                    <TableBodyCell>8256 total cells in 16 modules</TableBodyCell>
+                  </TableBodyRow>
+                  <TableBodyRow>
+                    <TableBodyCell>Weight: 625Kg</TableBodyCell>
+                  </TableBodyRow>
+                  <TableBodyRow>
+                    <TableBodyCell><Button color="red" class="mt-1 flex-row" type="button" onclick="location.href='{pipUrl}' ">see more</Button></TableBodyCell>
+                  </TableBodyRow>
+                </TableBody>
+            </Table>
+        </Card>
         <Accordion flush multiple>
             <AccordionItem open>
                 <span slot="header" class="text-base flex gap-2">
@@ -128,7 +151,7 @@
                 <div style="display: flex; flex-direction: column;">
                     <div class="link-area" style="padding: 0px 5px 0px 5px">
                         {#each results as item}
-                            <Button outline color="green" class="mt-1 flex-row" type="button" onclick="location.href='{item.DestinationUrl}' ">
+                            <Button outline color="red" class="mt-1 flex-row" type="button" onclick="location.href='{item.DestinationUrl}' ">
                                 <div class="flex-row">
                                     <h3>{item.name} ({item.type})</h3>
                                     <svg aria-hidden="true" class="ml-2 mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
