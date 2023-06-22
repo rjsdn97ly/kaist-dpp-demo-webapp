@@ -3,8 +3,8 @@
     import logo from "$lib/assets/kaist_logo.png";
 </script>
 
-<div class="header-div" style="display: flex; flex-direction: column; box-shadow: 0px 0px 5px 1px #555555;">
-    <Navbar let:hidden let:toggle color="form">
+<div class="header-div " style="display: flex; flex-direction: column;">
+    <Navbar let:hidden let:toggle color="form" navClass="px-2 sm:px-4 py-2.5 absolute w-full z-20 top-0 left-0 border-b">
         <NavBrand href="/">
             <img
             src="{logo}"
@@ -12,7 +12,7 @@
             alt="Logo"
             />
             <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            KAIST GS1 DIGITAL LINK
+            GS1 DIGITAL LINK
             </span>
         </NavBrand>
         <!-- <NavHamburger on:click={toggle} />

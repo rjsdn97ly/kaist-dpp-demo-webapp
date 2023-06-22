@@ -1,3 +1,7 @@
+*{
+    font-weight: 300; font-family: sans-serif;
+}
+
 .header-div {
     height: 50px;
     display: flex;
@@ -38,4 +42,9 @@ p {
 hr {
     margin: 2px 0px 2px 0px;
     border-color: cornflowerblue;
+}
+
+.op-7 {
+    opacity: 0.5;
+    font-weight: 200;
 }
