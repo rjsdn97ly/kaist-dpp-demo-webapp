@@ -4,6 +4,8 @@
     import { GradientButton, Button, Card, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
     import Youtube from "svelte-youtube-embed";
     import { AccordionItem, Accordion } from 'flowbite-svelte'
+    import { Tabs, TabItem } from 'flowbite-svelte'
+    import { Spinner } from 'flowbite-svelte'
 
     let parsed = {};
     if (typeof window !== "undefined") {
@@ -81,8 +83,8 @@
                         item.type = "gs1:relatedVideo";
                         break;
                     case 'gs1:dpp':
-                        item.name = "Traceability";
-                        item.type = "gs1:traceability";
+                        item.name = "Digital Product Passport";
+                        item.type = "gs1:dpp";
                         break;
                     default:
                         break;
@@ -109,39 +111,51 @@
 
 <main>
     <div style="display: flex; flex-direction: column;">
-        <h1>{imgTitle}</h1>
-        <br>
-        <img src="{imgSrc}" alt="not work">
+        {#if imgTitle != "" && imgSrc != ""}
+            <h1>{imgTitle}</h1>
+            <br>
+            <img src="{imgSrc}" alt="not work">
+        {:else}
+            <Spinner color="red" />
+        {/if}
         <h1 class="op-7">{primaryKey} {primaryValue}</h1>
         <h1 class="op-7">{qualifierKey} : {qualifierValue}</h1>
     </div>
     <br>
     <div class="area">
-        <Card>
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Tesla 100kWh Pack specifications</h5>
-            <Table>
-                <TableBody class="divide-y">
-                  <TableBodyRow>
-                    <TableBodyCell>16 x 6.3kWh Tesla Modules</TableBodyCell>
-                  </TableBodyRow>
-                  <TableBodyRow>
-                    <TableBodyCell>103 kWh</TableBodyCell>
-                  </TableBodyRow>
-                  <TableBodyRow>
-                    <TableBodyCell>400V pack</TableBodyCell>
-                  </TableBodyRow>
-                  <TableBodyRow>
-                    <TableBodyCell>8256 total cells in 16 modules</TableBodyCell>
-                  </TableBodyRow>
-                  <TableBodyRow>
-                    <TableBodyCell>Weight: 625Kg</TableBodyCell>
-                  </TableBodyRow>
-                  <TableBodyRow>
-                    <TableBodyCell><Button color="red" class="mt-1 flex-row" type="button" onclick="location.href='{pipUrl}' ">see more</Button></TableBodyCell>
-                  </TableBodyRow>
-                </TableBody>
-            </Table>
-        </Card>
+        <Tabs style="underline full">
+            <TabItem open>
+                <div slot="title" class="flex items-center gap-2">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" /></svg>
+                    SPEC
+                </div>
+                <Card>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Tesla 100kWh Pack specifications</h5>
+                    <Table>
+                        <TableBody class="divide-y">
+                          <TableBodyRow>
+                            <TableBodyCell>16 x 6.3kWh Tesla Modules</TableBodyCell>
+                          </TableBodyRow>
+                          <TableBodyRow>
+                            <TableBodyCell>103 kWh</TableBodyCell>
+                          </TableBodyRow>
+                          <TableBodyRow>
+                            <TableBodyCell>400V pack</TableBodyCell>
+                          </TableBodyRow>
+                          <TableBodyRow>
+                            <TableBodyCell>8256 total cells in 16 modules</TableBodyCell>
+                          </TableBodyRow>
+                          <TableBodyRow>
+                            <TableBodyCell>Weight: 625Kg</TableBodyCell>
+                          </TableBodyRow>
+                          <TableBodyRow>
+                            <TableBodyCell><Button color="red" class="mt-1 flex-row" type="button" onclick="location.href='{pipUrl}' ">see more</Button></TableBodyCell>
+                          </TableBodyRow>
+                        </TableBody>
+                    </Table>
+                </Card>
+            </TabItem>
+        </Tabs>
         <Accordion flush multiple>
             <AccordionItem open>
                 <span slot="header" class="text-base flex gap-2">
@@ -158,13 +172,12 @@
                                 </div>
                             </Button>
                         {:else}
-                            <!-- this block renders when photos.length === 0 -->
-                            <p>loading...</p>
+                            <Spinner color="red" />
                         {/each}
                     </div>
                 </div>
             </AccordionItem>
-            <AccordionItem>
+            <AccordionItem open>
               <span slot="header" class="text-base flex gap-2">
                 <span class="material-symbols-outlined">smart_display</span>
                 <span>GS1 Related Video</span>
@@ -172,6 +185,8 @@
               <div style="display: flex; flex-direction: column;">
                 {#if videoSrc != ""}
                     <Youtube id="{videoSrc}"/>
+                {:else}
+                    <Spinner color="red" />
                 {/if}
                 </div>
             </AccordionItem>
