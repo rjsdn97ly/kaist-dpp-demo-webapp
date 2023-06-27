@@ -13,7 +13,7 @@
     }
     let pureQString = parsed.key + "";
     let qString = parsed.key + "";
-    let deafultLang = "en";
+    let deafultLang = "ko";
     qString = qString.split("/");
     let stringS =  "";
 
@@ -71,7 +71,7 @@
         const dlResponse = await fetch(dlAddress, {headers}).then(response => response.json());
         let dupCheckArr = [];
         dlResponse.forEach((item,idx)=>{
-            if(item.AcceptLanguage == deafultLang && item.LinkType != "image" && item.LinkType != "gs1:homepage" && item.LinkType != "main"){
+            if(item.AcceptLanguage == deafultLang && item.LinkType != "image" && item.LinkType != "templateApp"){
                 switch(item.LinkType) {
                     case 'gs1:pip':
                         item.name = "Product Information";
@@ -85,6 +85,15 @@
                     case 'gs1:dpp':
                         item.name = "Digital Product Passport";
                         item.type = "gs1:dpp";
+                        break;
+                    case 'gs1:locationInfo':
+                        item.name = "Location";
+                        item.type = "gs1:locationInfo";
+                        item.DestinationUrl = item.DestinationUrl + "";
+                        break;
+                    case 'gs1:homepage':
+                        item.name = "Homepage";
+                        item.type = "gs1:homepage";
                         break;
                     default:
                         break;
@@ -123,7 +132,7 @@
     </div>
     <br>
     <div class="area">
-        <Tabs style="underline full">
+        <!-- <Tabs style="underline full">
             <TabItem open>
                 <div slot="title" class="flex items-center gap-2">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" /></svg>
@@ -155,7 +164,7 @@
                     </Table>
                 </Card>
             </TabItem>
-        </Tabs>
+        </Tabs> -->
         <Accordion flush multiple>
             <AccordionItem open>
                 <span slot="header" class="text-base flex gap-2">
@@ -165,7 +174,7 @@
                 <div style="display: flex; flex-direction: column;">
                     <div class="link-area" style="padding: 0px 5px 0px 5px">
                         {#each results as item}
-                            <Button outline color="red" class="mt-1 flex-row" type="button" onclick="location.href='{item.DestinationUrl}' ">
+                            <Button outline color="red" class="mt-1 flex-row" type="button" onclick='location.href="{item.DestinationUrl}" '>
                                 <div class="flex-row">
                                     <h3>{item.name} ({item.type})</h3>
                                     <svg aria-hidden="true" class="ml-2 mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -177,19 +186,17 @@
                     </div>
                 </div>
             </AccordionItem>
+            {#if videoSrc != ""}
             <AccordionItem open>
               <span slot="header" class="text-base flex gap-2">
                 <span class="material-symbols-outlined">smart_display</span>
                 <span>GS1 Related Video</span>
             </span>
               <div style="display: flex; flex-direction: column;">
-                {#if videoSrc != ""}
                     <Youtube id="{videoSrc}"/>
-                {:else}
-                    <Spinner color="red" />
-                {/if}
                 </div>
             </AccordionItem>
+            {/if}
           </Accordion>
 
         
