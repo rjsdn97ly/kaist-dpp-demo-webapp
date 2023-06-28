@@ -82,10 +82,6 @@
                         item.name = "Realated Video";
                         item.type = "gs1:relatedVideo";
                         break;
-                    case 'gs1:dpp':
-                        item.name = "Digital Product Passport";
-                        item.type = "gs1:dpp";
-                        break;
                     case 'gs1:locationInfo':
                         item.name = "Location";
                         item.type = "gs1:locationInfo";
@@ -94,6 +90,10 @@
                     case 'gs1:homepage':
                         item.name = "Homepage";
                         item.type = "gs1:homepage";
+                        break;
+                    case 'gs1:traceability':
+                        item.name = "Traceability";
+                        item.type = "gs1:traceability";
                         break;
                     default:
                         break;
