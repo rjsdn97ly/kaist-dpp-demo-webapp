@@ -71,7 +71,7 @@
         const dlResponse = await fetch(dlAddress, {headers}).then(response => response.json());
         let dupCheckArr = [];
         dlResponse.forEach((item,idx)=>{
-            if(item.AcceptLanguage == deafultLang && (item.LinkType != "image" || item.Title != "template")){
+            if(item.AcceptLanguage == deafultLang && item.LinkType != "image" && item.Title != "template"){
                 switch(item.LinkType) {
                     case 'gs1:pip':
                         item.name = "Product Information";
