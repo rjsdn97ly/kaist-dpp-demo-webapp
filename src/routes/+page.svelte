@@ -78,6 +78,10 @@
               item.type = "gs1:pip";
               pipUrl = item.DestinationUrl;
               break;
+            case "gs1:hasRetailers":
+              item.name = "Retailers";
+              item.type = "gs1:hasRetailers";
+              break;
             case "gs1:relatedVideo":
               item.name = "Realated Video";
               item.type = "gs1:relatedVideo";
@@ -123,7 +127,7 @@
     </div>
     <br />
     <div class="area">
-      <!-- <Tabs style="underline full">
+      <Tabs style="underline full">
         <TabItem open>
           <div slot="title" class="flex items-center gap-2">
             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
@@ -142,16 +146,16 @@
             <Table>
               <TableBody class="divide-y">
                 <TableBodyRow>
-                  <TableBodyCell>배송 방법 : 택배</TableBodyCell>
+                  <TableBodyCell>COOR / CMD4JP01V-BLK</TableBodyCell>
                 </TableBodyRow>
                 <TableBodyRow>
-                  <TableBodyCell>배송 지역 : 전국지역</TableBodyCell>
+                  <TableBodyCell>View (1 month) Over 42,000 views</TableBodyCell>
                 </TableBodyRow>
                 <TableBodyRow>
-                  <TableBodyCell>배송 비용 : 무료</TableBodyCell>
+                  <TableBodyCell>Accumulated sales (1 year) 900 or more</TableBodyCell>
                 </TableBodyRow>
                 <TableBodyRow>
-                  <TableBodyCell>배송 기간 : 1일 ~ 3일</TableBodyCell>
+                  <TableBodyCell>ratings: 4.9</TableBodyCell>
                 </TableBodyRow>
                 <TableBodyRow>
                   <TableBodyCell><Button color="red" class="mt-1 flex-row" type="button" onclick="location.href='{pipUrl}' ">see more</Button></TableBodyCell>
@@ -160,7 +164,7 @@
             </Table>
           </Card>
         </TabItem>
-      </Tabs> -->
+      </Tabs>
       <Accordion flush multiple>
         <AccordionItem open>
           <span slot="header" class="text-base flex gap-2">
