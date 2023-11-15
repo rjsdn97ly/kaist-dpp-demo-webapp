@@ -143,7 +143,7 @@
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {imgTitle}
             </h5>
-            <Table>
+            <!-- <Table>
               <TableBody class="divide-y">
                 <TableBodyRow>
                   <TableBodyCell>COOR / CMD4JP01V-BLK</TableBodyCell>
@@ -161,7 +161,29 @@
                   <TableBodyCell><Button color="red" class="mt-1 flex-row" type="button" onclick="location.href='{pipUrl}' ">see more</Button></TableBodyCell>
                 </TableBodyRow>
               </TableBody>
-            </Table>
+            </Table> -->
+            <!-- <Table>
+              <TableBody class="divide-y">
+                <TableBodyRow>
+                  <TableBodyCell>16 x 6.3kWh Tesla Modules </TableBodyCell>
+                </TableBodyRow>
+                <TableBodyRow>
+                  <TableBodyCell>103 kWh</TableBodyCell>
+                </TableBodyRow>
+                <TableBodyRow>
+                  <TableBodyCell>400V pack</TableBodyCell>
+                </TableBodyRow>
+                <TableBodyRow>
+                  <TableBodyCell>8256 total cells in 16 modules</TableBodyCell>
+                </TableBodyRow>
+                <TableBodyRow>
+                  <TableBodyCell>625Kg</TableBodyCell>
+                </TableBodyRow>
+                <TableBodyRow>
+                  <TableBodyCell><Button color="red" class="mt-1 flex-row" type="button" onclick="location.href='{pipUrl}' ">see more</Button></TableBodyCell>
+                </TableBodyRow>
+              </TableBody>
+            </Table> -->
           </Card>
         </TabItem>
       </Tabs>
